@@ -69,6 +69,7 @@ node app.js
 ```bash
 cd frontend/reactproject
 npm install
+npm install react-router-dom
 npm start
 ```
 
