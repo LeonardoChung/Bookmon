@@ -22,7 +22,9 @@ Crud/
 │       ├── src/
 │       │   ├── App.jsx
 │       │   ├── pages/
-│       │   └── ...
+│       │       └──ListaJogadores.jsx
+|       |       └──DetalhesJogador.jsx
+|       |       └──FormularioJogador.jsx   
 ```
 
 ---
