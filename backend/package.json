@@ -13,9 +13,11 @@
     "cors": "^2.8.5",
     "express": "^4.21.2",
     "mysql": "^2.18.1",
-    "mysql2": "^3.13.0",
-    "nodemon": "^3.1.9"
+    "mysql2": "^3.13.0"
   },
   "keywords": [],
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
 }
