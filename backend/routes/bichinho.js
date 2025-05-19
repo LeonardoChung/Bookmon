@@ -1,5 +1,5 @@
 import express from 'express';
-import { updateBichinho } from '../controllers/bichinho';
+import { updateBichinho } from '../controllers/bichinho.js';
 
 const router = express.Router();
 
