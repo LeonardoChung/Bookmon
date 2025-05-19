@@ -1,0 +1,73 @@
+.book {
+  position: relative; 
+  width: fit-content;
+  margin: auto;
+}
+
+.book-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  width: 700px;
+}
+
+.bichinho {
+  position: absolute;
+  top: 15%;      
+  left: 57%;     
+  z-index: 2;   
+}
+
+.quackito-img {
+  width: 200px;  
+  height: auto;
+}
+
+.user{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    position: absolute;
+    top: 40%;      
+    left: 7%;     
+    z-index: 2;    
+}
+
+.exampleUser-img{
+    width: 150px;
+    height: 150px;
+}
+
+.feed{
+    background-color: rgba(230, 217, 184, 0.6);
+    border-radius: 30px;
+    height: 80px;
+    width: 230px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    padding: 15px;
+    top: 15%;      
+    left: 10%;     
+    z-index: 2;  
+}
+
+a{
+    color: #025870;
+    font-family: "DynaPuff", system-ui;
+    font-size: 16px;
+    opacity: 1;
+    text-decoration: none;
+    text-align: center;
+}
+
+p{
+    text-align: center;
+    font-size: 20px;
+    font-family: "DynaPuff", system-ui;
+    color: #025870;
+    font-weight: 20;
+}
