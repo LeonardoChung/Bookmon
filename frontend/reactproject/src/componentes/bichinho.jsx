@@ -1,4 +1,5 @@
 import Header from "./header.jsx";
+import "../css/bichinho.css";
 import React, { useEffect, useState } from 'react';
 import { getBichinho, feedBichinho} from './api';
 
@@ -49,23 +50,31 @@ function Bichinho(){
     return(
         <div>
 
-        <Header/>
+            <Header/>
 
-        <h2>Seu Pet Virtual 🐾</h2>
-        <img src={getGifByNivel(pet.nivel)} alt="Bichinho" style={{ width: '200px' }} />
+            <div className="body">
+                <h1>Seu Quackito Virtual</h1>
+                <img src={getGifByNivel(pet.nivel)} alt="Bichinho" style={{ width: '200px' }} />
 
-        <p>Nível: {pet.nivel}</p>
-        <p>Pontos: {pet.pontos} / 50</p>
+                <div className="bichinho-status">
+                    <p>Nível: {pet.nivel}</p>
+                    <p>Pontos: {pet.pontos} / 50</p>
+                    <p>Pontuação disponível: {pet.pontuacao}</p>
+                </div>
 
-        <p>Pontuação disponível: {pet.pontuacao}</p>
 
-        <div>
-        <h3>🍽 Escolha a comida</h3>
-        <button onClick={() => handleFeed('ração')}>Ração 🐾 (+10)</button>
-        <button onClick={() => handleFeed('fruta')}>Fruta 🍎 (+15)</button>
-        <button onClick={() => handleFeed('carne')}>Carne 🍖 (+25)</button>
-        <button onClick={() => handleFeed('doce')}>Doce 🍩 (+5)</button>
-        </div>
+                <div className="feed-bichinho">
+                    <h1>Escolha a comida:</h1>
+                    <div className="buttons">
+                        <button onClick={() => handleFeed('ração')}>Ração 🐾 (+10)</button>
+                        <button onClick={() => handleFeed('fruta')}>Fruta 🍎 (+15)</button>
+                        <button onClick={() => handleFeed('carne')}>Carne 🍖 (+25)</button>
+
+                        <button onClick={() => handleFeed('doce')}>Doce 🍩 (+5)</button>
+                    </div>
+                    
+                </div>
+            </div>
 
         </div>
 

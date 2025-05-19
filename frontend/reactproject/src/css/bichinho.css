@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap');
+
+body{
+    height: 90vh;
+    width: 100%;
+    background-color: #e1efff;
+}
+
+.body{
+    height: 90vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+p{
+    line-height: 5px;
+    text-align: center;
+    font-size: 20px;
+    font-family: "DynaPuff", system-ui;
+    font-weight: 20;
+}
+
+h1{
+    text-align: center;
+    font-family: "DynaPuff", system-ui;
+    color: #025870;
+}
+
+button{
+    cursor: pointer;
+    height: 70px;
+    width: 150px;
+    margin: 15px;
+    font-weight: 400;
+    border-radius: 15px;
+    color: #ffff;
+    background-color: #025870;
+    font-family: "DynaPuff", system-ui;
+    outline: none;
+    box-shadow: none;
+    border-color: none;
+}
+
+.bichinho-status{
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+.feed-bichinho{
+    display: flex;
+    flex-direction: column;
+}
