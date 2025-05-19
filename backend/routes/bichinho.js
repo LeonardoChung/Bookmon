@@ -1,4 +1,6 @@
 import express from 'express';
+import { updateBichinho } from '../controllers/bichinho';
+
 const router = express.Router();
 
 let bichinho = {
@@ -39,5 +41,7 @@ router.post('/feed', (req, res) => {
 
   res.json(bichinho);
 });
+
+router.put("/:id", updateBichinho);
 
 export default router;
