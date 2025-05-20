@@ -1,4 +1,4 @@
-import {db} from "../db.js"
+import { db } from "../db.js"
 
 // para a página de perfil do user
 export const getuserInfo = (req, res) => {
@@ -18,15 +18,24 @@ export const getuserInfo = (req, res) => {
 
 // métodos para postagem do user
 export const createPost = (req, res) => {
-    const q = "INSERT INTO posts (idposts, iduser, datetime, content) VALUES (?, ?, ?, ?)";
-    db.query(q, [req.body.idposts, req.body.id, req.body.datetime, req.body.content], (err, data) => {
+    const q = "INSERT INTO posts (iduser, datetime, content) VALUES (?, ?, ?)";
+    
+    const now = new Date();
+    const datetime = now.getFullYear() + '-' +
+        String(now.getMonth() + 1).padStart(2, '0') + '-' +
+        String(now.getDate()).padStart(2, '0') + ' ' +
+        String(now.getHours()).padStart(2, '0') + ':' +
+        String(now.getMinutes()).padStart(2, '0') + ':' +
+        String(now.getSeconds()).padStart(2, '0');
+
+    db.query(q, [req.params.id, datetime, req.body.content], (err, data) => {
         if (err) return res.json(err);
-        return res.status(200).json({message: "Post realizado com sucesso"});
+        return res.status(200).json({ message: "Post realizado com sucesso" });
     });
 }
 
-export const getPosts = (req, res) => {
-    const q = "SELECT * FROM posts WHERE iduser = ?"; // sort by datetime??
+export const getUserPosts = (req, res) => {
+    const q = "SELECT * FROM posts WHERE iduser = ? ORDER BY idposts DESC"; // sort by datetime??
     db.query(q, [req.params.id], (err, data) => {
         if (err) return res.json(err);
         return res.status(200).json(data);
