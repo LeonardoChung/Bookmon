@@ -1,0 +1,89 @@
+.user-body{
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.right{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.medium{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.left{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px;
+}
+
+.user-infos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.infos{
+    font-size: 18px;
+    margin: 2px;
+    display: flex;
+    flex-direction: row;
+    font-family: "DynaPuff", system-ui;
+    color: #025870;
+    align-items: center;
+}
+
+.inf{
+    font-size: 15px;
+    font-family: "DynaPuff", system-ui;
+    font-weight: 20;
+    padding-left: 12px;
+    color: #000000;
+}
+
+.exampleUser-perfil-img{
+    height: 200px;
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+.posts{
+    width: 100%;
+}
+
+.li-posts{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    margin: 10px;
+    padding: 20px;
+    background-color: #ffff;
+    text-align: center;
+    font-size: 12px;
+    font-family: "DynaPuff", system-ui;
+    font-weight: 20;
+    color: #000000;
+}
+
+.title{
+    text-align: center;
+    font-size: 25px;
+    font-family: "DynaPuff", system-ui;
+    color: #025870;
+}

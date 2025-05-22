@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "./header.jsx";
+import "../css/feed.css";
+
 
 function Feed() {
     const { id } = useParams();
@@ -66,21 +68,30 @@ function Feed() {
         <div>
             <Header />
 
-            <input
-                type="text"
-                name="content"
-                placeholder="Compartilhe suas leituras..."
-                value={newPost.content}
-                onChange={handleNewPostChange}
-            />
-            <button onClick={handleSaveNewPost}>Publicar</button>
+            <div className="body-feed">
+                <div className="feed-left">
+                    <input
+                        type="text"
+                        name="content"
+                        placeholder="Compartilhe suas leituras..."
+                        value={newPost.content}
+                        onChange={handleNewPostChange}
+                    />
+                    <button onClick={handleSaveNewPost}>Publicar</button>
+                </div>
 
-            <p>feed:</p>
-            <ul>
-                {posts.map(post => (
-                    <li key={post.idposts}>{post.username}: {post.content}</li>
-                ))}
-            </ul>
+                <div className="feed-right">
+                    
+                    <div className="title">Feed:</div>
+                    <ul>
+                        {posts.map(post => (
+                            <li key={post.idposts}>{post.username}: {post.content}</li>
+                        ))}
+                    </ul>
+
+                </div>
+            </div>
+
         </div>
     )
 

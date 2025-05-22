@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "./header.jsx";
+import "../css/user.css";
+import exampleUser from "../images/example-user.png";
 
 function User(){
     const { id } = useParams();
@@ -55,25 +57,36 @@ function User(){
         <div>
             <Header/>
 
-            <div>
-                <p>username: {userInfo.username}</p>
-                <p>páginas lidas: {userInfo.pages_read}</p>
-                <p>metas cumpridas: {userInfo.metas_completed}</p>
-                <p>nível: {userInfo.level}</p>
+            <div className="user-body">
+                <div className="left">
+                    <img src={exampleUser} alt="User" className="exampleUser-perfil-img" />
+                    <div className="user-infos">
+                        <div className="infos">User: <div className="inf">{userInfo.username}</div></div> 
+                        <div className="infos">Páginas lidas: <div className="inf">{userInfo.pages_read}</div></div>
+                        <div className="infos">Metas cumpridas: <div className="inf">{userInfo.metas_completed}</div></div>
+                        <div className="infos">Nível: <div className="inf">{userInfo.level}</div></div>
+                    </div>
+                    
+                </div>
 
-                <p>posts:</p>
-                <ul>
-                    {posts.map(post => (
-                        <li key={post.idposts}>{post.content}</li>
-                    ))}
-                </ul>
+                <div className="medium">
+                    <div className="title">Posts:</div>
+                    <ul className="posts">
+                        {posts.map(post => (
+                            <li className="li-posts" key={post.idposts}>{post.content}</li>
+                        ))}
+                    </ul>
+                </div>
 
-                <p>conquistas: </p>
-                <ul>
-                    {conquistas.map(conq => (
-                        <li key={conq.idconquistas}>{conq.name} {conq.description}</li>
-                    ))}
-                </ul>
+                <div className="right">
+                    <div className="title">Conquistas:</div>
+                    <ul>
+                        {conquistas.map(conq => (
+                            <li  cclkey={conq.idconquistas}>{conq.name} {conq.description}</li>
+                        ))}
+                    </ul>
+                </div>
+
             </div>
         </div>
     )

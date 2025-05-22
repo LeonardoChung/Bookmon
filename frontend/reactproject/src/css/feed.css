@@ -1,0 +1,15 @@
+.body-feed{
+    height: 90vh;
+    width: 100%;
+    display: flex;
+}
+
+.left-feed{
+    width: 50%;
+    height: 100%;
+}
+
+.right-feed{
+    width: 50%;
+    height: 100%;
+}
