@@ -2,13 +2,15 @@ import Header from "./header.jsx";
 import "../css/bichinho.css";
 import React, { useEffect, useState } from 'react';
 import { getBichinho, feedBichinho} from './api';
+import { useParams } from 'react-router-dom';
 
 function Bichinho(){
 
     const [pet, setBichinho] = useState(null);
+    const { id } = useParams();
 
     const loadBichinho = async () => {
-        const data = await getBichinho();
+        const data = await getBichinho(id);
         setBichinho(data);
     };
 
@@ -18,7 +20,7 @@ function Bichinho(){
 
     const handleFeed = async (food) => {
     try {
-        const data = await feedBichinho(food);
+        const data = await feedBichinho(id, food);
         setBichinho(data);
     } catch (err) {
         alert('Você não tem pontos suficientes!');
@@ -58,7 +60,7 @@ function Bichinho(){
 
                 <div className="bichinho-status">
                     <p>Nível: {pet.nivel}</p>
-                    <p>Pontos: {pet.pontos} / 50</p>
+                    <p>Pontos: {pet.level_points} / 50</p>
                     <p>Pontuação disponível: {pet.pontuacao}</p>
                 </div>
 
@@ -66,11 +68,10 @@ function Bichinho(){
                 <div className="feed-bichinho">
                     <h1>Escolha a comida:</h1>
                     <div className="buttons">
-                        <button onClick={() => handleFeed('ração')}>Ração 🐾 (+10)</button>
-                        <button onClick={() => handleFeed('fruta')}>Fruta 🍎 (+15)</button>
-                        <button onClick={() => handleFeed('carne')}>Carne 🍖 (+25)</button>
-
-                        <button onClick={() => handleFeed('doce')}>Doce 🍩 (+5)</button>
+                        <button className="bichinho-button" onClick={() => handleFeed('ração')}>Ração 🐾 (+10)</button>
+                        <button className="bichinho-button" onClick={() => handleFeed('fruta')}>Fruta 🍎 (+15)</button>
+                        <button className="bichinho-button" onClick={() => handleFeed('carne')}>Carne 🍖 (+25)</button>
+                        <button className="bichinho-button" onClick={() => handleFeed('doce')}>Doce 🍩 (+5)</button>
                     </div>
                     
                 </div>

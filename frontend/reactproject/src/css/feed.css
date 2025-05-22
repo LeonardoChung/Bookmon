@@ -2,14 +2,88 @@
     height: 90vh;
     width: 100%;
     display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
-.left-feed{
+.feed-left{
     width: 50%;
     height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
-.right-feed{
+.feed-left input{
+    width: 90%;
+    height: 40%;
+    border-radius: 20px;
+    padding: 20px;
+    font-family: "DynaPuff", system-ui;
+}
+
+.feed-button{
+    position: absolute;
+    cursor: pointer;
+    height: 70px;
+    width: 150px;
+    margin: 15px;
+    font-weight: 400;
+    border-radius: 15px;
+    color: #ffff;
+    background-color: #025870;
+    font-family: "DynaPuff", system-ui;
+    outline: none;
+    box-shadow: none;
+    border-color: none;
+    right: 5%; 
+    margin-top: 27%;
+}
+
+.feed-right{
     width: 50%;
     height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.feed-right li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 40%;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #ffff;
+    text-align: center;
+    font-size: 12px;
+    font-family: "DynaPuff", system-ui;
+    font-weight: 20;
+    color: #000000;
+    border: solid #000000 2px;
+}
+
+.feed-right ul{
+    max-height: 70%; 
+    margin: 10px;
+    overflow-y: auto;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.feed-title{
+    text-align: center;
+    font-size: 25px;
+    font-family: "DynaPuff", system-ui;
+    color: #025870;
+    margin-bottom: 15px;
 }

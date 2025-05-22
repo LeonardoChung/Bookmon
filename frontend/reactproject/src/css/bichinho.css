@@ -29,7 +29,7 @@ h1{
     color: #025870;
 }
 
-button{
+.bichinho-button{
     cursor: pointer;
     height: 70px;
     width: 150px;
@@ -46,8 +46,6 @@ button{
 
 .bichinho-status{
     margin-top: 20px;
-    margin-bottom: 20px;
-
 }
 
 .feed-bichinho{

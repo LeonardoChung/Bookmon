@@ -77,12 +77,12 @@ function Feed() {
                         value={newPost.content}
                         onChange={handleNewPostChange}
                     />
-                    <button onClick={handleSaveNewPost}>Publicar</button>
+                    <button  className="feed-button" onClick={handleSaveNewPost}>Publicar</button>
                 </div>
 
                 <div className="feed-right">
                     
-                    <div className="title">Feed:</div>
+                    <div className="feed-title">Feed:</div>
                     <ul>
                         {posts.map(post => (
                             <li key={post.idposts}>{post.username}: {post.content}</li>
