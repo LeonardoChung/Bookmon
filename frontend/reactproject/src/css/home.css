@@ -1,3 +1,10 @@
+.home-body{
+  width: 100%;
+  height: 90vh;
+  display: flex;
+
+}
+
 .book {
   position: relative; 
   width: fit-content;
@@ -71,3 +78,66 @@ p{
     color: #025870;
     font-weight: 20;
 }
+
+.home-left{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.home-right{
+  width: 50%;
+  height: 100%;
+  padding-right: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.flecha1{
+  width: 70px;
+  height: 80px;
+  margin-left: 15px;
+  margin-bottom: 6%;
+}
+
+.flecha2{
+  width: 70px;
+  height: 80px;
+  margin-right: 20px;
+  margin-left: 15px;
+}
+
+.flecha3{
+  width: 70px;
+  height: 80px;
+  margin-right: 20px;
+  margin-left: 15px;
+}
+
+.item-left{
+  display: flex;
+  align-items: center;
+  margin-top: 5%;
+  margin-bottom: 20%;
+}
+
+.item-right{
+  display: flex;
+  align-items: center;
+  margin-top: 10%;
+  margin-bottom: 10%; 
+}
+
+.item-text{
+  text-align: center;
+  font-size: 25px;
+  font-family: "DynaPuff", system-ui;
+  color: #025870;
+  font-weight: 30;
+}
+
