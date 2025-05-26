@@ -4,6 +4,7 @@ import bichinhoRoutes from './routes/bichinho.js';
 import userRoutes from './routes/users.js';
 import feedRoutes from './routes/feed.js';
 import authRoutes from './routes/auth.js';
+import leiturasRoutes from './routes/leituras.js';
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use('/', authRoutes);
 app.use('/api/bichinho', bichinhoRoutes);
 app.use('/feed', feedRoutes);
 app.use('/user', userRoutes);
+app.use('/leituras', leiturasRoutes);
 
 
 app.listen(3001, () => {

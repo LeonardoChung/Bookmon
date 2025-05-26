@@ -8,6 +8,7 @@ import User from "./componentes/user.jsx";
 import Bichinho from "./componentes/bichinho.jsx";
 import Feed from "./componentes/feed.jsx";
 import ErrorPage from "./componentes/error.jsx";
+import Leituras from "./componentes/leituras.jsx";
 
 function App() {
   return (
@@ -50,6 +51,14 @@ function App() {
           element={
             <PrivateRoute>
               <Feed />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/leituras/:id"
+          element={
+            <PrivateRoute>
+              <Leituras />
             </PrivateRoute>
           }
         />

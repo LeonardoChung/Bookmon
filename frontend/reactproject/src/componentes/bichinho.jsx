@@ -1,4 +1,3 @@
-import Header from "./header.jsx";
 import "../css/bichinho.css";
 import React, { useEffect, useState } from 'react';
 import { getBichinho, feedBichinho} from './api';
@@ -51,9 +50,6 @@ function Bichinho(){
 
     return(
         <div>
-
-            <Header/>
-
             <div className="body">
                 <h1>Seu Quackito Virtual</h1>
                 <img src={getGifByNivel(pet.nivel)} alt="Bichinho" style={{ width: '200px' }} />

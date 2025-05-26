@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Header from "./header.jsx";
 import "../css/user.css";
 import exampleUser from "../images/example-user.png";
 
@@ -55,8 +54,6 @@ function User(){
 
     return(
         <div>
-            <Header/>
-
             <div className="user-body">
                 <div className="left">
                     <img src={exampleUser} alt="User" className="exampleUser-perfil-img" />

@@ -14,9 +14,6 @@ function Home() {
 
     return (
         <div className="geral">
-
-            <Header />
-
             <div className="home-body">
 
                 <div className="home-left">

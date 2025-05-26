@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Header from "./header.jsx";
 import "../css/feed.css";
 
 
@@ -66,8 +65,6 @@ function Feed() {
 
     return (
         <div>
-            <Header />
-
             <div className="body-feed">
                 <div className="feed-left">
                     <input

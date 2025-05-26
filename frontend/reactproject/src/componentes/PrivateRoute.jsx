@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Navigate } from "react-router-dom";
+import Header from "./header.jsx";
 
 export default function PrivateRoute({ children }) {
     const token = localStorage.getItem("token");
@@ -9,7 +10,11 @@ export default function PrivateRoute({ children }) {
         return <Navigate to="/error" />;
     }
 
-    return children;
+    return (<>
+        <Header />
+        {children}
+    </>
+    );
 }
 
 PrivateRoute.propTypes = {

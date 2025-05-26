@@ -38,6 +38,11 @@ function Header() {
                 </ul>
                 <ul>
                     <li className="item-menu">
+                        <Link className="link" to={`/leituras/${userId}`}>Leituras</Link>
+                    </li>
+                </ul>
+                <ul>
+                    <li className="item-menu">
                         <Link className="link" to={`/feed/${userId}`}>Feed</Link>
                     </li>
                 </ul>
