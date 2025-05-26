@@ -52,6 +52,14 @@ function Home(){
                     </Link>
                 </div>
 
+                <div className="leituras">
+                    <p>Bem-vindo, leitor!</p>
+                    <p>Vamos ler?</p>
+                    <Link className="link" to="/leituras">
+                        <img src={quackitoWave} alt="Quackito" className="quackito-img" />
+                    </Link>
+                </div>
+
             </div>
 
             <div className="home-right">
