@@ -4,7 +4,6 @@ import quackitoWave from "../images/quackito_wave.gif";
 import exampleUser from "../images/example-user.png";
 import flecha1 from "../images/seta-curva.png";
 import flecha2 from "../images/seta-curva 2.png";
-import flecha3 from "../images/seta-curva 3.png";
 import "../css/home.css";
 import { Link } from "react-router-dom";
 
@@ -22,11 +21,11 @@ function Home() {
                 <div className="home-left">
                     <div className="item-left">
                         <div className="item-text">Acesse seu feed</div>
-                        <img src={flecha2} alt="flecha2" className="flecha2" />
+                        <img src={flecha1} alt="flecha1" className="flecha1" />
                     </div>
                     <div className="item-left">
                         <div className="item-text">Acesse seu perfil</div>
-                        <img src={flecha3} alt="flecha3" className="flecha3" />
+                        <img src={flecha1} alt="flecha1" className="flecha1" />
                     </div>
 
                 </div>
@@ -57,7 +56,7 @@ function Home() {
 
                 <div className="home-right">
                     <div className="item-right">
-                        <img src={flecha1} alt="flecha1" className="flecha1" />
+                        <img src={flecha2} alt="flecha2" className="flecha2"/>
                         <div className="item-text">Acesse seu Quackito virtual</div>
 
                     </div>

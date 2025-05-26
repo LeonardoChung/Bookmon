@@ -1,0 +1,56 @@
+.bookmon-body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.bookmon-left{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-left: 7%;
+    padding-right: 7%;
+}
+
+.bookmon-right{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.quackitoThumb{
+    width: 80%;
+}
+
+.bookmon-text{
+    text-align: center;
+    font-size: 23px;
+    font-family: "DynaPuff", system-ui;
+    font-weight: 5;
+    color: #025870;
+    padding-bottom: 2%;
+}
+
+button{
+    cursor: pointer;
+    height: 60px;
+    width: 200px;
+    margin: 15px;
+    font-weight: 400;
+    border-radius: 15px;
+    color: #ffff;
+    background-color: #025870;
+    font-family: "DynaPuff", system-ui;
+    outline: none;
+    box-shadow: none;
+    border-color: none;
+}
