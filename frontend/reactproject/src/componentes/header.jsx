@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
 import { useRef, useState } from "react";
 import logo from "../images/logo.png";
 import iconMenu from "../images/icon-menu.png";
@@ -7,6 +7,8 @@ import "../css/header.css";
 function Header() {
     const navbarRef = useRef(null);
     const [menuAberto, setMenuAberto] = useState(false);
+    const navigate = useNavigate();
+    const userId = localStorage.getItem("userId");
 
     function showMenu() {
         if (navbarRef.current) {
@@ -16,33 +18,43 @@ function Header() {
         }
     }
 
+    function handleLogout() {
+        localStorage.removeItem("token");
+        navigate("/login");
+    }
+
     return (
         <div className="header">
             <nav className="navbar" ref={navbarRef}>
                 <ul className="top_lista">
                     <li className="item-menu">
-                        <Link className="link" to="/">Home</Link>
+                        <Link className="link" to="/home">Home</Link>
                     </li>
                 </ul>
                 <ul>
                     <li className="item-menu">
-                        <Link className="link" to="/user">Perfil</Link>
+                        <Link className="link" to={`/user/${userId}`}>Perfil</Link>
                     </li>
                 </ul>
                 <ul>
                     <li className="item-menu">
-                        <Link className="link" to="/feed">Feed</Link>
+                        <Link className="link" to={`/feed/${userId}`}>Feed</Link>
                     </li>
                 </ul>
                 <ul>
                     <li className="item-menu">
-                        <Link className="link" to="/bichinho">Quackito virtual</Link>
+                        <Link className="link" to={`/bichinho/${userId}`}>Quackito virtual</Link>
+                    </li>
+                </ul>
+                <ul>
+                    <li className="item-menu">
+                        <span className="link" onClick={handleLogout} style={{ cursor: "pointer" }}>Sair</span>
                     </li>
                 </ul>
             </nav>
 
             <div className="logo">
-                <Link className="link" to="/">
+                <Link className="link" to="/home">
                     <img src={logo} alt="Logo" className="logo-img" />
                 </Link>
             </div>

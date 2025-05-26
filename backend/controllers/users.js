@@ -1,11 +1,12 @@
-import { db } from "../db.js"
+import db from '../db.js';
+
 
 // para a página de perfil do user
 export const getuserInfo = (req, res) => {
     const q = `SELECT u.username,
-       (SELECT IFNULL(SUM(pages), 0) FROM leituras WHERE iduser = u.idusers) AS pages_read,
-       (SELECT COUNT(*) FROM user_metas WHERE iduser = u.idusers AND \`status\` = 1) AS metas_completed,
-       (SELECT \`level\` FROM bicho WHERE iduser = u.idusers LIMIT 1) AS \`level\`
+      (SELECT IFNULL(SUM(pages), 0) FROM leituras WHERE iduser = u.idusers) AS pages_read,
+      (SELECT COUNT(*) FROM user_metas WHERE iduser = u.idusers AND \`status\` = 1) AS metas_completed,
+      (SELECT \`level\` FROM bicho WHERE iduser = u.idusers LIMIT 1) AS \`level\`
 		FROM users u
         WHERE u.idusers = ?
         LIMIT 1`;
@@ -45,12 +46,13 @@ export const getUserPosts = (req, res) => {
 // conquistas
 export const getConquistas = (req, res) => {
     const q = `SELECT conq.idconquistas, conq.\`name\`, conq.\`description\`
-	FROM conquistas conq 
-    JOIN users u 
+	FROM conquistas conq
+    JOIN users u
     JOIN user_conq ON (user_conq.iduser = u.idusers AND user_conq.idconquista = conq.idconquistas)
     WHERE u.idusers = ? AND user_conq.\`status\` = 1`;
     db.query(q, [req.params.id], (err, data) => {
         if (err) return res.json(err);
         return res.status(200).json(data);
     });
+    
 }
