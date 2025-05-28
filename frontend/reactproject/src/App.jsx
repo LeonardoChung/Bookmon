@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Bookmon from "./componentes/bookmon.jsx";
 import Cadastro from "./componentes/cadastro.jsx";
 import Login from "./componentes/login.jsx";
@@ -21,6 +21,7 @@ function App() {
         <Route path="/cadastro" element={<Cadastro/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/error" element={<ErrorPage/>} />
+        <Route path="*" element={<Navigate to ="/error"/>} />
         
         {/* privadas */}
         <Route

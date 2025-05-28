@@ -1,4 +1,3 @@
-import Header from "./header.jsx";
 import book from "../images/book.webp";
 import quackitoWave from "../images/quackito_wave.gif";
 import exampleUser from "../images/example-user.png";
