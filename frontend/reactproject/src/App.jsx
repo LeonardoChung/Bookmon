@@ -9,6 +9,7 @@ import Bichinho from "./componentes/bichinho.jsx";
 import Feed from "./componentes/feed.jsx";
 import ErrorPage from "./componentes/error.jsx";
 import Leituras from "./componentes/leituras.jsx";
+import Cadastro_leitura from "./componentes/cadastro_leitura.jsx";
 
 function App() {
   return (
@@ -59,6 +60,14 @@ function App() {
           element={
             <PrivateRoute>
               <Leituras />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/adicionar/:id"
+          element={
+            <PrivateRoute>
+              <Cadastro_leitura />
             </PrivateRoute>
           }
         />

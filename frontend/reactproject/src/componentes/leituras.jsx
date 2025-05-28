@@ -9,7 +9,7 @@ function Leituras() {
   useEffect(() => {
     fetch(`http://localhost:3001/leituras/getLeituras/${id}`)
       .then((response) => response.json())
-      .then((dados) => setData(dados))
+      .then((dados) => {setData(dados);})
       .catch((erro) => console.error("Erro ao buscar leituras:", erro));
   }, [id]);
 
@@ -18,7 +18,7 @@ function Leituras() {
       <h1 className="title">Leituras</h1>
 
       <div className="btn-adicionar">
-        <button onClick={() => navigate("/adicionar")} className="btn-list">
+        <button onClick={() => navigate(`/adicionar/${id}`)} className="btn-list">
           Adicionar Leitura
         </button>
       </div>
@@ -41,9 +41,7 @@ function Leituras() {
       </ul>
 
       {/* 
-        create -> `http://localhost:3001/leituras/createLeitura/${id}`
         update -> `http://localhost:3001/leituras/${id}`
-        get -> `http://localhost:3001/leituras/getLeituras/${id}`
       */}
     </div>
   );
