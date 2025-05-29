@@ -57,3 +57,13 @@ ul{
     z-index: 3;
 }
 
+li span{
+    float: right;
+    text-decoration: none;
+    font-size: 20px;
+    color: #025870;
+    font-family: "DynaPuff", system-ui;
+    padding: 10px 4%;
+    padding-right: 40px;  
+}
+

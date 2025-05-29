@@ -53,7 +53,7 @@ function Header() {
                 </ul>
                 <ul>
                     <li className="item-menu">
-                        <span className="link" onClick={handleLogout} style={{ cursor: "pointer" }}>Sair</span>
+                        <span className="link" onClick={handleLogout}>Sair</span>
                     </li>
                 </ul>
             </nav>

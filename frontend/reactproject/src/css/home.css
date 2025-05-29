@@ -102,27 +102,18 @@ p{
   width: 70px;
   height: 80px;
   margin-left: 15px;
-  margin-bottom: 6%;
+  margin-right: 10px;
 }
 
 .flecha2{
   width: 70px;
   height: 80px;
-  margin-right: 20px;
-  margin-left: 15px;
-}
-
-.flecha3{
-  width: 70px;
-  height: 80px;
-  margin-right: 20px;
   margin-left: 15px;
 }
 
 .item-left{
   display: flex;
   align-items: center;
-  margin-top: 5%;
   margin-bottom: 20%;
 }
 

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import "../css/leitura.css";
 
 function Leituras() {
   const [data, setData] = useState([]);
@@ -55,22 +56,25 @@ function Leituras() {
   }
 
   return (
-    <div>
-      <h1 className="title">Leituras</h1>
-
-      <div className="btn-adicionar">
-        <button onClick={() => navigate(`/adicionar/${id}`)} className="btn-list">
-          Adicionar Leitura
+    <div className="body-leitura">
+      <div className="top-leitura">
+        <div className="leitura-title">Leituras</div>
+        <div className="btn-adicionar">
+        <button onClick={() => navigate(`/adicionar/${id}`)} className="button-adicionar">
+          +
         </button>
+        </div>
       </div>
 
-      <ul className="list">
+      <ul className="leitura-list">
         {data.map((item) => (
           <li key={item.idleituras} className="li-list">
-            Nome: {item.book}
-            <br />
-            Páginas: {item.pages}
-            <br />
+            <div className="info-list">
+                <div className="list-text">Nome:</div> {item.book}
+            </div>
+            <div className="info-list">
+                <div className="list-text">Páginas:</div> {item.pages}
+            </div>
             <button onClick={() => handleEdit(item)} className="list-btn">
               Editar
             </button>
@@ -81,31 +85,34 @@ function Leituras() {
       {isEditModal && (
         <div className="modal">
           <div className="modal-content">
-            <h2>Editar Leitura</h2>
-            <label>Nome:</label>
-            <input
-              type="text"
-              name="book"
-              value={editedLivro.book}
-              onChange={handleInputChange}
-            />
-            <label>Páginas:</label>
-            <input
-              type="text"
-              name="pages"
-              value={editedLivro.pages}
-              onChange={handleInputChange}
-            />
-            <button onClick={handleSaveEdit} className="list-btn">
-              Salvar
-            </button>
-            <button onClick={() => setIsEditModal(false)} className="list-btn">
-              Cancelar
-            </button>
+            <div className="modal-card">
+              <div className="card-title">Editar Leitura</div>
+              <input
+                type="text"
+                name="book"
+                value={editedLivro.book}
+                onChange={handleInputChange}
+                placeholder="Nome do livro"
+              />
+              <input
+                type="text"
+                name="pages"
+                value={editedLivro.pages}
+                onChange={handleInputChange}
+                placeholder="Número de páginas"
+              />
+              <div className="card-bottom">
+                <button onClick={handleSaveEdit} className="card-btn">
+                  Salvar
+                </button>
+                <button onClick={() => setIsEditModal(false)} className="card-btn">
+                  Cancelar
+                </button>                
+              </div>
+            </div>  
           </div>
         </div>
       )}
-
     </div>
   );
 }

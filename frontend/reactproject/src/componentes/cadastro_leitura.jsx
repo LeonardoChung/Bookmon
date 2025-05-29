@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import quackitoSend from "../images/quackito_send.gif";
+import "../css/leitura-iu.css";
 
 const Cadastro_leitura = () => {
 
@@ -38,25 +40,34 @@ const Cadastro_leitura = () => {
 
     return(
 
-        <div className="modal">
-          <div className="modal-content">
-            <h2>Adicionar Nova Leitura</h2>
-            <label> Livro: </label>
-            <input
-              type="text"
-              name="book"
-              value={newLivro.book}
-              onChange={handleNewLivroChange}
-            />
-            <label> Páginas: </label>
-            <input
-              type="text"
-              name="pages"
-              value={newLivro.pages}
-              onChange={handleNewLivroChange}
-            />
-            <button onClick={handleSaveNewLivro} className="list-btn">Adicionar</button>
-            <button onClick={() => navigate("/")} className="list-btn">Voltar</button>
+        <div className="adicionar-leitura-body">
+          <div className="adicionar-leitura-content">
+            <div className="adicionar-leitura-card">
+              <div className="card-left">
+                <div className="adicionar-leitura-title">Adicionar Leitura</div>
+                <input
+                  type="text"
+                  name="book"
+                  value={newLivro.book}
+                  onChange={handleNewLivroChange}
+                  placeholder="Nome do livro"
+                />
+                <input
+                  type="text"
+                  name="pages"
+                  value={newLivro.pages}
+                  onChange={handleNewLivroChange}
+                  placeholder="Número de páginas"
+                />
+                <div>
+                  <button onClick={handleSaveNewLivro} className="adicionar-leitura-btn">Adicionar</button>
+                  <button onClick={() => navigate(`/leituras/${id}`)} className="adicionar-leitura-btn">Voltar</button>
+                </div>                
+              </div>
+              <div className="card-right">
+                <img src={quackitoSend} alt="Quackito" className="quackito-send" /> 
+              </div>
+            </div>
           </div>
         </div>
     )
