@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
+import "../css/login.css";
 
 export default function Register() {
     const [form, setForm] = useState({ username: "", password: "" });
@@ -21,21 +22,23 @@ export default function Register() {
         const data = await res.json();
         if (res.ok) {
             setMessage("Usuário cadastrado com sucesso!");
-            navigate("/login");
+            navigate("/home");
         } else {
             setMessage(data.message || "Erro ao cadastrar");
         }
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h2>Cadastro</h2>
-            <input type="text" name="username" placeholder="Username" onChange={handleChange} />
-            <input type="password" name="password" placeholder="Password" onChange={handleChange} />
-            <button type="submit">Cadastrar</button>
-            {message && <p>{message}</p>}
+        <div className="login-body">
+            <form onSubmit={handleSubmit}>
+                <div className="login-title">Cadastro</div>
+                <input type="text" name="username" placeholder="Username" onChange={handleChange} />
+                <input type="password" name="password" placeholder="Password" onChange={handleChange} />
+                <button type="submit" className="login-button" >Cadastrar</button>
+                {message && <p>{message}</p>}
 
-            <p>Já tem uma conta? Faça login</p>
-        </form>
+                <div className="login-text"> <Link to="/login">Já tem uma conta? Faça login</Link></div>
+            </form>
+        </div>
     );
 }
