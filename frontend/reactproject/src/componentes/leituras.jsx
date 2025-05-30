@@ -107,9 +107,9 @@ function Leituras() {
                 </button>
                 <button onClick={() => setIsEditModal(false)} className="card-btn">
                   Cancelar
-                </button>                
+                </button>
               </div>
-            </div>  
+            </div>
           </div>
         </div>
       )}

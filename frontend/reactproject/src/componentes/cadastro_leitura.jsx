@@ -8,8 +8,8 @@ const Cadastro_leitura = () => {
     const navigate = useNavigate();
     const [newLivro, setNewLivro] = useState({ book: "", pages: ""});
     const [data, setData] = useState([]);
+    const [meta, setMeta] = useState(null);
     const { id } = useParams();
-    
 
     function handleNewLivroChange(event) {
         const { name, value } = event.target;
