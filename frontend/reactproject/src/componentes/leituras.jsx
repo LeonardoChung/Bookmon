@@ -3,21 +3,23 @@ import { useNavigate, useParams } from "react-router-dom";
 import "../css/leitura.css";
 
 function Leituras() {
-  const [data, setData] = useState([]);
   const navigate = useNavigate();
+  const [data, setData] = useState([]);
   const { id } = useParams();
   const [isEditModal, setIsEditModal] = useState(false);
   const [editedLivro, setEditedLivro] = useState({});
+  const [paginaAnterior, setPaginaAnterior] = useState(0);
 
   useEffect(() => {
     fetch(`http://localhost:3001/leituras/getLeituras/${id}`)
       .then((response) => response.json())
-      .then((dados) => {setData(dados);})
+      .then((dados) => { setData(dados); })
       .catch((erro) => console.error("Erro ao buscar leituras:", erro));
   }, [id]);
 
   function handleEdit(item) {
-    setEditedLivro({...item});
+    setEditedLivro({ ...item });
+    setPaginaAnterior(Number(item.pages));
     setIsEditModal(true);
   }
 
@@ -27,19 +29,24 @@ function Leituras() {
   }
 
   function handleSaveEdit() {
+    const novasPaginas = Number(editedLivro.pages);
+    const diferenca = novasPaginas - paginaAnterior;
+
     console.log(editedLivro);
     console.log("EDITANDO:", {
-  id: editedLivro.idleituras,
-  book: editedLivro.book,
-  pages: editedLivro.pages
-});
+      id: editedLivro.idleituras,
+      book: editedLivro.book,
+      pages: editedLivro.pages,
+      diferenca: diferenca
+    });
+
     fetch(`http://localhost:3001/leituras/${editedLivro.idleituras}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-      book: editedLivro.book,
-      pages: editedLivro.pages
-    }),
+        book: editedLivro.book,
+        pages: editedLivro.pages
+      }),
     })
       .then((response) => response.json())
       .then(() => {
@@ -51,6 +58,24 @@ function Leituras() {
             livro.idleituras === editedLivro.idleituras ? editedLivro : livro
           )
         );
+
+        if (diferenca >= 10) {
+          fetch(`http://localhost:3001/metas/getPaginas/${id}`)
+            .then((res) => res.json())
+            .then((metaData) => {
+              if (metaData.length > 0 && metaData[0].status === 0) {
+                fetch(`http://localhost:3001/metas/completePaginas/${id}`, {
+                  method: "PUT",
+                })
+                  .then(() => {
+                    alert("Meta de leitura concluída! +25 pontos 🎉");
+                  })
+                  .catch((err) =>
+                    console.error("Erro ao completar meta de leitura:", err)
+                  );
+              }
+            });
+        }
       })
       .catch((error) => console.error("Erro ao atualizar:", error));
   }
@@ -60,9 +85,9 @@ function Leituras() {
       <div className="top-leitura">
         <div className="leitura-title">Leituras</div>
         <div className="btn-adicionar">
-        <button onClick={() => navigate(`/adicionar/${id}`)} className="button-adicionar">
-          +
-        </button>
+          <button onClick={() => navigate(`/adicionar/${id}`)} className="button-adicionar">
+            +
+          </button>
         </div>
       </div>
 
@@ -70,10 +95,10 @@ function Leituras() {
         {data.map((item) => (
           <li key={item.idleituras} className="li-list">
             <div className="info-list">
-                <div className="list-text">Nome:</div> {item.book}
+              <div className="list-text">Nome:</div> {item.book}
             </div>
             <div className="info-list">
-                <div className="list-text">Páginas:</div> {item.pages}
+              <div className="list-text">Páginas:</div> {item.pages}
             </div>
             <button onClick={() => handleEdit(item)} className="list-btn">
               Editar

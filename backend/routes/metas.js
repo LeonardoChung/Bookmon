@@ -1,10 +1,22 @@
 import express from "express";
-import { getMetaLeitura, completeMetaLeitura } from "../controllers/metas.js";
+import { getMetaPaginas, completeMetaPaginas, getMetaPost, completeMetaPost, getMetaCarne, completeMetaCarne, getMetaLeitura, completeMetaLeitura } from "../controllers/metas.js";
 
 const router = express.Router();
 
+// meta de páginas
+router.get("/getPaginas/:id", getMetaPaginas);
+router.put('/completePaginas/:id', completeMetaPaginas);
+
+// meta de post
+router.get("/getPost/:id", getMetaPost);
+router.put('/completePost/:id', completeMetaPost);
+
+// meta de carne
+router.get("/getCarne/:id", getMetaCarne);
+router.put('/completeCarne/:id', completeMetaCarne);
+
 // meta de leitura
-router.get("/leitura/:id", getMetaLeitura);
-router.put('/leitura/:id', completeMetaLeitura);
+router.get("/getLeitura/:id", getMetaLeitura);
+router.put('/completeLeitura/:id', completeMetaLeitura);
 
 export default router;
