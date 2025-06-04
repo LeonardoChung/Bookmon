@@ -79,7 +79,7 @@ function User(){
                     <div className="title">Conquistas:</div>
                     <ul>
                         {conquistas.map(conq => (
-                            <li  cclkey={conq.idconquistas}>{conq.name} {conq.description}</li>
+                            <li key={conq.idconquistas}>{conq.name} {conq.description}</li>
                         ))}
                     </ul>
                 </div>

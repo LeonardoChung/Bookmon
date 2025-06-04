@@ -1,5 +1,6 @@
 import express from "express";
-import {createPost, getConquistas, getUserPosts, getuserInfo } from "../controllers/users.js";
+import {createPost,completeConquistas, getConquistas, getUserPosts, getuserInfo } from "../controllers/users.js";
+
 
 const router = express.Router();
 
@@ -9,6 +10,7 @@ router.get("/posts/:id", getUserPosts);
 
 // conquistas
 router.get("/conquistas/:id", getConquistas);
+router.put("/conquistas/paginas/:id", completeConquistas);
 
 // para o perfil
 router.get("/:id", getuserInfo);

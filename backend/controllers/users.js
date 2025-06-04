@@ -52,7 +52,7 @@ export const getConquistas = (req, res) => {
     WHERE u.idusers = ? AND user_conq.\`status\` = 1`;
     db.query(q, [req.params.id], (err, data) => {
         if (err) return res.json(err);
+
         return res.status(200).json(data);
     });
-    
 }
