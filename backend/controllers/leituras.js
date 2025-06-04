@@ -4,7 +4,7 @@ export const getLeituras = (req, res) => {
   const q = "SELECT idleituras, book, pages FROM leituras WHERE iduser = ?";
   db.query(q, [req.params.id], (err, data) => {
     if (err) return res.status(500).json(err);
-    return res.status(200).json(data); 
+    return res.status(200).json(data);
   });
 };
 

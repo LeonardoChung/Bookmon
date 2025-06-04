@@ -22,7 +22,7 @@ export default function Register() {
         const data = await res.json();
         if (res.ok) {
             setMessage("Usuário cadastrado com sucesso!");
-            navigate("/home");
+            navigate("/login");
         } else {
             setMessage(data.message || "Erro ao cadastrar");
         }

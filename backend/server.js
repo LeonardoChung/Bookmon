@@ -6,6 +6,7 @@ import feedRoutes from './routes/feed.js';
 import authRoutes from './routes/auth.js';
 import leiturasRoutes from './routes/leituras.js';
 import conquistasRoutes from './routes/conquistas.js';
+import metasRoutes from './routes/metas.js';
 
 const app = express();
 
@@ -17,8 +18,10 @@ app.use('/api/bichinho', bichinhoRoutes);
 app.use('/feed', feedRoutes);
 app.use('/user', userRoutes);
 app.use('/leituras', leiturasRoutes);
+app.use('/metas', metasRoutes);
 app.use('/conquistas', conquistasRoutes);
 app.use()
+
 
 app.listen(3001, () => {
   console.log('Servidor rodando na porta 3001');

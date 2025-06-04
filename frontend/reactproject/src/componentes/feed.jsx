@@ -31,6 +31,28 @@ function Feed() {
             .then(response => response.json())
             .then(() => {
                 console.log("Novo post adicionado.");
+
+                // Verifica status da meta de leitura
+                fetch(`http://localhost:3001/metas/getPost/${id}`)
+                    .then((res) => res.json())
+                    .then((data) => {
+                        if (data.length > 0 && data[0].status === 0) {
+                            // Se meta ainda não concluída, atualiza
+                            fetch(`http://localhost:3001/metas/completePost/${id}`, {
+                                method: "PUT",
+                            })
+                                .then(() => {
+                                    alert("Meta de post concluída! +25 pontos 🎉");
+                                })
+                                .catch((err) => {
+                                    console.error("Erro ao completar meta de post:", err);
+                                });
+                        }
+                    })
+                    .catch((err) => {
+                        console.error("Erro ao verificar meta de leitura:", err);
+                    });
+
                 setAddSuccess(true);
                 setNewPost({ content: "" });
                 setTimeout(() => {
@@ -74,11 +96,11 @@ function Feed() {
                         value={newPost.content}
                         onChange={handleNewPostChange}
                     />
-                    <button  className="feed-button" onClick={handleSaveNewPost}>Publicar</button>
+                    <button className="feed-button" onClick={handleSaveNewPost}>Publicar</button>
                 </div>
 
                 <div className="feed-right">
-                    
+
                     <div className="feed-title">Feed:</div>
                     <ul>
                         {posts.map(post => (
