@@ -20,8 +20,6 @@ app.use('/user', userRoutes);
 app.use('/leituras', leiturasRoutes);
 app.use('/metas', metasRoutes);
 app.use('/conquistas', conquistasRoutes);
-app.use()
-
 
 app.listen(3001, () => {
   console.log('Servidor rodando na porta 3001');
