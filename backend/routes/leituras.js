@@ -7,4 +7,5 @@ router.post("/createLeitura/:id", createLeitura);
 router.get("/getLeituras/:id", getLeituras);
 router.put('/:id', updateLeitura);
 
+
 export default router;

@@ -15,6 +15,10 @@ export const completeConquistaPaginas = (req, res) => {
     db.query(q, [iduser], (err, result) => {
     if (err) return res.status(500).json(err);
     const total = result[0].total;
+    
+    if (data.length > 0 && data[0].status === 1) {
+          return res.status(200).json({ message: "Conquista já foi desbloqueada." });
+        }
 
     if (total >= 50) {
     const update = `UPDATE user_conq SET status = 1 WHERE iduser = ? AND idconquista = 1 AND status = 0`;
