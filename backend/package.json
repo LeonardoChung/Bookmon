@@ -15,7 +15,8 @@
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
     "mysql": "^2.18.1",
-    "mysql2": "^3.14.1"
+    "mysql2": "^3.14.1",
+    "node-cron": "^4.1.0"
   },
   "keywords": [],
   "devDependencies": {
