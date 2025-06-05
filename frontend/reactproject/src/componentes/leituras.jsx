@@ -77,6 +77,7 @@ function Leituras() {
               }
             });
         }
+         if (data.length > 0 && data[0].status === 0) {
         // Verifica e ativa conquista de 50 páginas
         fetch(`http://localhost:3001/conquistas/completePaginas/${id}`, {method: "PUT",})
           .then((res) => res.json())
@@ -86,7 +87,7 @@ function Leituras() {
             }
           })
           .catch((err) => console.error("Erro ao verificar conquista:", err));
-
+        }
       })
       .catch((error) => console.error("Erro ao atualizar:", error));
   }

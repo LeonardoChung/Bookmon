@@ -49,18 +49,25 @@ const Cadastro_leitura = () => {
                 });   
             }
           })
-          .catch((err) => {
-            console.error("Erro ao verificar meta de leitura:", err);
-          });
-
-          fetch(`http://localhost:3001/conquistas/completePaginas/${id}`, {method: "PUT",})
-          .then((res) => res.json())
-          .then((result) => {
-            if (result.message.includes("Conquista")) {
-              alert(result.message); 
-            }
-          })
-          .catch((err) => console.error("Erro ao verificar conquista:", err));
+         // Verifica o status da conquista ANTES de tentar completá-la
+          fetch(`http://localhost:3001/conquistas/getPaginas/${id}`)
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.length > 0 && data[0].status === 0) {
+                // Se ainda não foi completada, então ativa
+                fetch(`http://localhost:3001/conquistas/completePaginas/${id}`, {
+                  method: "PUT",
+                })
+                  .then((res) => res.json())
+                  .then((result) => {
+                    if (result.message.includes("Conquista")) {
+                      alert(result.message);
+                    }
+                  })
+                  .catch((err) => console.error("Erro ao completar conquista:", err));
+              }
+            })
+            .catch((err) => console.error("Erro ao verificar status da conquista:", err));
 
     
 
