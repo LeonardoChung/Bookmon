@@ -16,9 +16,9 @@ export const completeConquistaPaginas = (req, res) => {
     if (err) return res.status(500).json(err);
     const total = result[0].total;
 
-    // and status = 0
     if (total >= 50) {
-    const update = `UPDATE user_conq SET status = 1 WHERE iduser = ? AND idconquista = 1;`;
+    const update = `UPDATE user_conq SET status = 1 WHERE iduser = ? AND idconquista = 1 AND status = 0`;
+    
       db.query(update, [iduser], (err) => {
         if (err) return res.status(500).json(err);
         return res.status(200).json({ message: " Conquista alcançada!" });

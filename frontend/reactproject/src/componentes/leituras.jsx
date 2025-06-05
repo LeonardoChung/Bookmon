@@ -15,6 +15,7 @@ function Leituras() {
       .then((response) => response.json())
       .then((dados) => { setData(dados); })
       .catch((erro) => console.error("Erro ao buscar leituras:", erro));
+
   }, [id]);
 
   function handleEdit(item) {
@@ -76,6 +77,16 @@ function Leituras() {
               }
             });
         }
+        // Verifica e ativa conquista de 50 páginas
+        fetch(`http://localhost:3001/conquistas/completePaginas/${id}`, {method: "PUT",})
+          .then((res) => res.json())
+          .then((result) => {
+            if (result.message.includes("Conquista")) {
+              alert(result.message); 
+            }
+          })
+          .catch((err) => console.error("Erro ao verificar conquista:", err));
+
       })
       .catch((error) => console.error("Erro ao atualizar:", error));
   }

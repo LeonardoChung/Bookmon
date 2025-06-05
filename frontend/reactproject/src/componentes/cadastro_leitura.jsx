@@ -46,12 +46,26 @@ const Cadastro_leitura = () => {
                 })
                 .catch((err) => {
                   console.error("Erro ao completar meta de leitura:", err);
-                });
+                });   
             }
           })
           .catch((err) => {
             console.error("Erro ao verificar meta de leitura:", err);
           });
+
+          fetch(`http://localhost:3001/conquistas/completePaginas/${id}`, {method: "PUT",})
+          .then((res) => res.json())
+          .then((result) => {
+            if (result.message.includes("Conquista")) {
+              alert(result.message); 
+            }
+          })
+          .catch((err) => console.error("Erro ao verificar conquista:", err));
+
+    
+
+
+
 
         navigate(`/leituras/${id}`);
       })
