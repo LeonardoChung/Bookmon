@@ -71,46 +71,45 @@ export default function Bichinho() {
 
   return (
     <div className="body">
-      <h1>Seu Quackito Virtual</h1>
+      <div className="bichinho-left">
+        <h1>Seu Quackito Virtual</h1>
 
-      <img
-        src={getGifByNivel(pet.nivel)}
-        alt="Bichinho"
-        style={{ width: "200px" }}
-      />
+        <img
+          src={getGifByNivel(pet.nivel)}
+          alt="Bichinho"
+          style={{ width: "200px" }}
+        />
 
-      <div className="bichinho-status">
-        <p>Nível: {pet.nivel}</p>
-        <p>Pontos: {pet.level_points} / 50</p>
-        <p>Pontuação disponível: {pet.pontuacao}</p>
-      </div>
-
-      <div className="feed-bichinho">
-        <h1>Escolha a comida:</h1>
-        <div className="buttons">
-          <button onClick={() => handleFeed("ração")}>Ração 🐾 (+10)</button>
-          <button onClick={() => handleFeed("fruta")}>Fruta 🍎 (+15)</button>
-          <button onClick={() => handleFeed("carne")}>Carne 🍖 (+25)</button>
-          <button onClick={() => handleFeed("doce")}>Doce 🍩 (+5)</button>
+        <div className="bichinho-status">
+          <p>Nível: {pet.nivel}</p>
+          <p>Pontos: {pet.level_points} / 50</p>
+          <p>Pontuação disponível: {pet.pontuacao}</p>
         </div>
+
+        <div className="feed-bichinho">
+          <h1>Escolha a comida:</h1>
+          <div className="buttons">
+            <button onClick={() => handleFeed("doce")} className="bichinho-button">Doce 🍩 (+5)</button>
+            <button onClick={() => handleFeed("ração")} className="bichinho-button">Ração 🐾 (+10)</button>
+            <button onClick={() => handleFeed("fruta")} className="bichinho-button">Fruta 🍎 (+15)</button>
+            <button onClick={() => handleFeed("carne")} className="bichinho-button">Carne 🍖 (+25)</button>
+          </div>
+        </div>       
       </div>
-      <div className="mt-6 flex flex-col gap-3">
-        {metas.length === 0 && <span>Sem metas para hoje.</span>}
 
-        {metas.map(meta => (
-            <div key={meta.idmeta}>
-                <span
-                style={{
-                    textDecoration: meta.status === 1 ? "line-through" : "none",
-                    color: meta.status === 1 ? "#888" : "#000",
-                    fontSize: "16px"
-                }}
-                >
-                {meta.nome}
-                </span>
-            </div>
-            ))}
+      <div className="meta">
+        <div className="meta-card">
+          <div className="meta-title">Metas</div>
+          {metas.length === 0 && <span>Sem metas para hoje.</span>}
 
+          {metas.map(meta => (
+              <div key={meta.idmeta} className="meta-text">
+                  <span>
+                  {meta.nome}
+                  </span>
+              </div>
+              ))}
+        </div>
       </div>
     </div>
   );
