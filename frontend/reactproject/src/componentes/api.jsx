@@ -1,7 +1,14 @@
+import axios from "axios";
+
 export const getBichinho = async (id) => {
   const res = await fetch(`http://localhost:3001/api/bichinho/${id}`);
   return res.json();
 };
+
+const api = axios.create({
+  baseURL: process.env.REACT_APP_API_URL || "http://localhost:3001",
+  withCredentials: true,
+});
 
 export const feedBichinho = async (id, food) => {
   const foods = {
@@ -20,3 +27,5 @@ export const feedBichinho = async (id, food) => {
   if (!res.ok) throw new Error('Erro ao alimentar');
   return res.json();
 };
+
+export default api;   

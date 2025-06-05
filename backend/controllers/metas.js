@@ -79,3 +79,19 @@ export const completeMetaLeitura = (req, res) => {
         return res.status(200).json(data);
     });
 };
+
+export const listMetas = (req, res) => {
+  const q = `
+    SELECT m.idmetas AS idmeta,
+           m.description AS nome,
+           um.status
+      FROM user_metas um
+      JOIN metas m ON m.idmetas = um.idmeta    
+     WHERE um.iduser = ?;
+  `;
+
+  db.query(q, [req.params.id], (err, data) => {
+    if (err) return res.status(500).json(err);
+    res.status(200).json(data);
+  });
+};
