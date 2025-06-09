@@ -1,9 +1,11 @@
 import express from "express";
-import { getConquistaPaginas, completeConquistaPaginas  } from "../controllers/conquistas.js";
+import { getConquistaPaginas, completeConquistaPaginas, getConquistaQuackito, completeConquistaQuackito  } from "../controllers/conquistas.js";
 
 const router = express.Router();
 
 router.get("/getPaginas/:id", getConquistaPaginas);
 router.put('/completePaginas/:id', completeConquistaPaginas);
+router.get("/getQuackito/:id", getConquistaQuackito);
+router.put('/completeQuackito/:id', completeConquistaQuackito);
 
 export default router;

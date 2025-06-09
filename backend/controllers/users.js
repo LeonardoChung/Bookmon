@@ -6,6 +6,7 @@ export const getuserInfo = (req, res) => {
     const q = `SELECT u.username,
       (SELECT IFNULL(SUM(pages), 0) FROM leituras WHERE iduser = u.idusers) AS pages_read,
       (SELECT COUNT(*) FROM user_metas WHERE iduser = u.idusers AND \`status\` = 1) AS metas_completed,
+      (SELECT COUNT(*) FROM user_conq WHERE iduser = u.idusers AND \`status\` = 1) AS conquistas_completed,
       (SELECT \`level\` FROM bicho WHERE iduser = u.idusers LIMIT 1) AS \`level\`
 		FROM users u
         WHERE u.idusers = ?
@@ -20,7 +21,7 @@ export const getuserInfo = (req, res) => {
 // métodos para postagem do user
 export const createPost = (req, res) => {
     const q = "INSERT INTO posts (iduser, datetime, content) VALUES (?, ?, ?)";
-    
+
     const now = new Date();
     const datetime = now.getFullYear() + '-' +
         String(now.getMonth() + 1).padStart(2, '0') + '-' +

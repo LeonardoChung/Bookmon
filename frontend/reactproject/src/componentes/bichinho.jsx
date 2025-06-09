@@ -6,23 +6,26 @@ import api from "./api";
 
 export default function Bichinho() {
   const { id: petId } = useParams();
-  const [pet,   setPet]   = useState(null);
+  const [pet, setPet] = useState(null);
   const [metas, setMetas] = useState([]);
-  
+  const [showLevelUp, setShowLevelUp] = useState(false);
+  const [newLevel, setNewLevel] = useState(null);
+
+
   useEffect(() => {
     (async () => {
       const data = await getBichinho(petId);
       setPet(data);
     })();
   }, [petId]);
-   
+
   useEffect(() => {
     if (!pet) return;
     api.get(`/metas/list/${pet.iduser}`).then(r => setMetas(r.data));
   }, [pet]);
- 
+
   const handleCheck = (idMeta, checked) => {
-    if (!checked || !pet.iduser) return;    
+    if (!checked || !pet.iduser) return;
 
     const endpoints = {
       1: "completePaginas",
@@ -32,22 +35,43 @@ export default function Bichinho() {
     };
 
     api.put(`/metas/${endpoints[idMeta]}/${pet.iduser}`)
-       .then(() =>
-         setMetas(prev =>
-           prev.map(m =>
-             m.idmeta === idMeta ? { ...m, status: 1 } : m
-           )
-         )
-       );
+      .then(() =>
+        setMetas(prev =>
+          prev.map(m =>
+            m.idmeta === idMeta ? { ...m, status: 1 } : m
+          )
+        )
+      );
   };
-  
+
   const handleFeed = async (food) => {
     try {
       const data = await feedBichinho(petId, food);
+      const levelUp = data.nivel > pet.nivel;
+
+      if (levelUp) {
+        setNewLevel(data.nivel);
+        setShowLevelUp(true);
+
+        // conquista nível 3
+        if (data.nivel >= 3) {
+          const res = await fetch(`http://localhost:3001/conquistas/getQuackito/${pet.iduser}`);
+          const conqData = await res.json();
+
+          if (conqData.length > 0 && conqData[0].status === 0) {
+            await fetch(`http://localhost:3001/conquistas/completeQuackito/${pet.iduser}`, {
+              method: "PUT",
+            });
+            alert("Nova conquista! Quackito chegou ao nível 3! 🐥🏆");
+          }
+        }
+      }
+
       setPet(prev => ({ ...prev, ...data }));
-  
+
+      // meta da carne
       if (food === "carne") {
-        const res      = await fetch(`http://localhost:3001/metas/getCarne/${pet.iduser}`);
+        const res = await fetch(`http://localhost:3001/metas/getCarne/${pet.iduser}`);
         const metaData = await res.json();
 
         if (metaData.length > 0 && metaData[0].status === 0) {
@@ -63,7 +87,7 @@ export default function Bichinho() {
   };
 
   if (!pet) return <p>Carregando...</p>;
-  
+
   const getGifByNivel = (nivel) => {
     if (nivel >= 15) return "/gifs/patinho15.gif";
     return `/gifs/patinho${nivel > 1 ? nivel : 1}.gif`;
@@ -72,6 +96,18 @@ export default function Bichinho() {
   return (
     <div className="body">
       <div className="bichinho-left">
+
+        {showLevelUp && (
+          <div className="modal">
+            <div className="modal-content">
+              <div className="modal-card">
+                <h2>🎉 Parabéns! 🎉</h2>
+                <p> Você chegou ao nível {newLevel}!</p>
+                <button onClick={() => setShowLevelUp(false)}>Fechar</button>
+              </div>
+            </div></div>
+        )}
+
         <h1>Seu Quackito Virtual</h1>
 
         <img
@@ -94,7 +130,7 @@ export default function Bichinho() {
             <button onClick={() => handleFeed("fruta")} className="bichinho-button">Fruta 🍎 (+15)</button>
             <button onClick={() => handleFeed("carne")} className="bichinho-button">Carne 🍖 (+25)</button>
           </div>
-        </div>       
+        </div>
       </div>
 
       <div className="meta">
@@ -103,12 +139,12 @@ export default function Bichinho() {
           {metas.length === 0 && <span>Sem metas para hoje.</span>}
 
           {metas.map(meta => (
-              <div key={meta.idmeta} className="meta-text">
-                  <span>
-                  {meta.nome}
-                  </span>
-              </div>
-              ))}
+            <div key={meta.idmeta} className="meta-text">
+              <span>
+                {meta.nome}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
     </div>

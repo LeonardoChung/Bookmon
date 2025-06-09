@@ -77,19 +77,24 @@ function Leituras() {
               }
             });
         }
-         if (data.length > 0 && data[0].status === 0) {
-        // Verifica e ativa conquista de 50 páginas
-        fetch(`http://localhost:3001/conquistas/completePaginas/${id}`, {method: "PUT",})
+
+        fetch(`http://localhost:3001/conquistas/getPaginas/${id}`)
           .then((res) => res.json())
-          .then((result) => {
-            if (result.message.includes("Conquista")) {
-              alert(result.message); 
+          .then((metaData) => {
+            if (metaData.length > 0 && metaData[0].status === 0) {
+              // Verifica e ativa conquista de 50 páginas
+              fetch(`http://localhost:3001/conquistas/completePaginas/${id}`, { method: "PUT", })
+                .then((res) => res.json())
+                .then((result) => {
+                  if (result.message.includes("Conquista")) {
+                    alert(result.message);
+                  }
+                })
+                .catch((err) => console.error("Erro ao verificar conquista:", err));
             }
           })
-          .catch((err) => console.error("Erro ao verificar conquista:", err));
-        }
-      })
-      .catch((error) => console.error("Erro ao atualizar:", error));
+          .catch((error) => console.error("Erro ao atualizar:", error));
+      });
   }
 
   return (

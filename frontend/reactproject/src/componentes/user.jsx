@@ -76,7 +76,7 @@ function User(){
                 </div>
 
                 <div className="right">
-                    <div className="title">Conquistas:</div>
+                    <div className="title">Conquistas: {userInfo.conquistas_completed}</div>
                     <ul>
                         {conquistas.map(conq => (
                             <li key={conq.idconquistas}>{conq.name} {conq.description}</li>
