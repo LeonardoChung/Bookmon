@@ -4,7 +4,8 @@ export const getBichinho = (req, res) => {
     const q = `
         SELECT level AS nivel,
                points AS pontuacao,
-               level_points AS level_points
+               level_points AS level_points,
+               iduser
         FROM bicho
         WHERE iduser = ?
         LIMIT 1;
