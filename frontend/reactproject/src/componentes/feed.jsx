@@ -53,6 +53,16 @@ function Feed() {
                         console.error("Erro ao verificar meta de leitura:", err);
                     });
 
+                fetch(`http://localhost:3001/conquistas/posts/${id}`, {
+                method: "PUT",
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data.message?.includes("Conquista")) {
+                        alert("🏆 Conquista de 5 posts desbloqueada!");
+                    }
+                });
+
                 setAddSuccess(true);
                 setNewPost({ content: "" });
                 setTimeout(() => {
