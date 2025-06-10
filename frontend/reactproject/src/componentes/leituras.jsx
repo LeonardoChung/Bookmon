@@ -95,7 +95,10 @@ function Leituras() {
           })
           .catch((error) => console.error("Erro ao atualizar:", error));
       });
+
+      
   }
+
 
   return (
     <div className="body-leitura">

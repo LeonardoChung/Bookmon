@@ -47,6 +47,26 @@ export const completeConquistaQuackito = (req, res) => {
 
 };
 
+
+
+export const completeConquistaLivros = (req, res) => {
+  const iduser = req.params.id;
+  const q = "SELECT COUNT(*) AS total FROM leituras WHERE iduser = ?";
+  db.query(q, [iduser], (err, result) => {
+    if (err) return res.status(500).json(err);
+    const total = result[0].total;
+
+
+    if (total >= 10) {
+      const update = "UPDATE user_conq SET status = 1 WHERE iduser = ? AND idconquista = 3 AND status = 0";
+
+      db.query(update, [iduser], (err) => {
+        if (err) return res.status(500).json(err);
+        return res.status(200).json({ message: " Conquista alcançada!" });
+      });
+    }
+  });
+};
 // 10 livros (conquista 3)
 
 // posts (conquista 5)
