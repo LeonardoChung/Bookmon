@@ -4,6 +4,8 @@ import { useParams, useNavigate } from "react-router-dom"; // ADICIONADO useNavi
 import { getBichinho, feedBichinho } from "./api";
 import api from "./api";
 import quackitoLovely from "../images/quackito_lovely.gif";
+import Confetti from "react-confetti";
+import { useWindowSize } from "react-use";
 
 export default function Bichinho() {
   const { id: petId } = useParams();
@@ -13,6 +15,7 @@ export default function Bichinho() {
   const [showLevelUp, setShowLevelUp] = useState(false);
   const [newLevel, setNewLevel] = useState(null);
   const [isEditModal, setIsEditModal] = useState(false); // ESTADO ADICIONADO
+  const { width, height } = useWindowSize();
 
   useEffect(() => {
     (async () => {
@@ -79,6 +82,7 @@ export default function Bichinho() {
             method: "PUT",
           });
           alert("Meta de alimentação com carne concluída! +15 pontos 🎉");
+          window.location.reload();
         }
       }
     } catch (err) {
@@ -99,6 +103,7 @@ export default function Bichinho() {
 
         {showLevelUp && (
           <div className="modal">
+            <Confetti width={width} height={height} gravity={0.15} />
             <div className="modal-content">
               <div className="modal-card">
                 <h1>🎉 Parabéns! 🎉</h1>
@@ -112,9 +117,9 @@ export default function Bichinho() {
 
         <div className="bichinho-title">
           <h1>Seu Quackito Virtual</h1>
-          <button onClick={() => setIsEditModal(true)} className="button-metas">!</button>         
+          <button onClick={() => setIsEditModal(true)} className="button-metas">!</button>
         </div>
-        
+
 
         <img
           src={getGifByNivel(pet.nivel)}

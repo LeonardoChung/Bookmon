@@ -53,15 +53,26 @@ function Feed() {
                         console.error("Erro ao verificar meta de leitura:", err);
                     });
 
-                fetch(`http://localhost:3001/conquistas/posts/${id}`, {
-                method: "PUT",
-            })
-                .then((res) => res.json())
-                .then((data) => {
-                    if (data.message?.includes("Conquista")) {
-                        alert("🏆 Conquista de 5 posts desbloqueada!");
-                    }
-                });
+                fetch(`http://localhost:3001/conquistas/getPosts/${id}`)
+                    .then(res => res.json())
+                    .then((conqData) => {
+                        if (conqData.length > 0 && Number(conqData[0].status) === 0) {
+                            // Se a conquista ainda não foi completada, atualiza
+                            fetch(`http://localhost:3001/conquistas/posts/${id}`, {
+                                method: "PUT",
+                            })
+                                .then((res) => res.json())
+                                .then((data) => {
+                                    if (data.message?.includes("Conquista")) {
+                                        alert("🏆 Conquista de 5 posts desbloqueada!");
+                                    } else {
+                                        console.log("Conquista não atualizada:", data.message);
+                                    }
+                                })
+                                .catch((err) => console.error("Erro ao completar conquista de posts:", err));
+                        }
+                    })
+                    .catch((err) => console.error("Erro ao verificar conquista de posts:", err));
 
                 setAddSuccess(true);
                 setNewPost({ content: "" });

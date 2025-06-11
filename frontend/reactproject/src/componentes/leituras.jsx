@@ -11,27 +11,33 @@ function Leituras() {
   const [paginaAnterior, setPaginaAnterior] = useState(0);
 
   useEffect(() => {
-  fetch(`http://localhost:3001/leituras/getLeituras/${id}`)
-    .then((response) => response.json())
-    .then((dados) => {
-      setData(dados);
+    fetch(`http://localhost:3001/leituras/getLeituras/${id}`)
+      .then((response) => response.json())
+      .then((dados) => {
+        setData(dados);
 
-      if (dados.length >= 10) {
-        fetch(`http://localhost:3001/conquistas/livros/${id}`, {
-          method: "PUT",
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.message?.includes("Conquista")) {
-              alert("📚 Conquista de 10 leituras alcançada!");
-            }
-          })
-          .catch((err) =>
-            console.error("Erro ao verificar conquista de 10 leituras:", err)
-          );
-      }
-    })
-    .catch((erro) => console.error("Erro ao buscar leituras:", erro));
+        if (dados.length >= 10) {
+          fetch(`http://localhost:3001/conquistas/getLivros/${id}`)
+            .then(res => res.json())
+            .then((conqData) => {
+
+              if (conqData.length > 0 && conqData[0].status === 0) {
+                fetch(`http://localhost:3001/conquistas/livros/${id}`, {
+                  method: "PUT",
+                })
+                  .then((res) => res.json())
+                  .then((data) => {
+                    if (data.message?.includes("Conquista")) {
+                      alert("📚 Conquista de 10 leituras alcançada!");
+                    }
+                  });
+              }
+            })
+          .catch ((err) =>
+                console.error("Erro ao verificar conquista de 10 leituras:", err));
+        }
+      })
+      .catch((erro) => console.error("Erro ao buscar leituras:", erro));
   }, [id]);
 
   function handleEdit(item) {
@@ -112,7 +118,7 @@ function Leituras() {
           .catch((error) => console.error("Erro ao atualizar:", error));
       });
 
-      
+
   }
 
 
@@ -156,7 +162,7 @@ function Leituras() {
                 placeholder="Nome do livro"
               />
               <input
-                type="text"
+                type="number"
                 name="pages"
                 value={editedLivro.pages}
                 onChange={handleInputChange}
