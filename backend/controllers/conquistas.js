@@ -96,7 +96,7 @@ export const completeConquistaPosts = (req, res) => {
       return res.status(200).json({ message: "Ainda não atingiu 5 posts." });
     }
 
-    if (total >= 5) {
+    if (total == 5) {
       const update = "UPDATE user_conq SET status = 1 WHERE iduser = ? AND idconquista = 5 AND status = 0";
 
       db.query(update, [iduser], (err) => {
