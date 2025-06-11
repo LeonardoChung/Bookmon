@@ -7,7 +7,7 @@ import { jwtSecret, jwtExpiresIn } from '../config.js';
 export function register(req, res) {
     const { username, password } = req.body;
     if (!username || !password) {
-        return res.status(400).json({ message: 'É preciso username e password' });
+        return res.status(400).json({ message: 'Preencha todos os campos!' });
     }
 
     db.query(
@@ -16,7 +16,7 @@ export function register(req, res) {
         (err, rows) => {
             if (err) return res.status(500).json({ message: 'Erro no servidor' });
             if (rows.length > 0) {
-                return res.status(409).json({ message: 'Username já cadastrado' });
+                return res.status(409).json({ message: 'Username já cadastrado!' });
             }
 
             db.query(
@@ -25,7 +25,7 @@ export function register(req, res) {
                 (insertErr, result) => {
                     if (insertErr) return res.status(500).json({ message: 'Erro no servidor' });
                     res.status(201).json({
-                        message: 'Usuário criado com sucesso',
+                        message: 'Usuário criado com sucesso!',
                         userId: result.insertId
                     });
                 }
@@ -44,7 +44,7 @@ export function login(req, res) {
         (err, rows) => {
             if (err) return res.status(500).json({ message: 'Erro no servidor' });
             if (rows.length === 0) {
-                return res.status(401).json({ message: 'Credenciais inválidas' });
+                return res.status(401).json({ message: 'Credenciais inválidas!' });
             }
             const user = rows[0];
 

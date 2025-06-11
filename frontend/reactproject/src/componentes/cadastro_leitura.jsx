@@ -98,7 +98,7 @@ const Cadastro_leitura = () => {
               name="pages"
               value={newLivro.pages}
               onChange={handleNewLivroChange}
-              placeholder="Número de páginas"
+              placeholder="Número de páginas lidas"
             />
             <div>
               <button onClick={handleSaveNewLivro} className="adicionar-leitura-btn">Adicionar</button>

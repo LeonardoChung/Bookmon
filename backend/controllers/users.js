@@ -32,7 +32,7 @@ export const createPost = (req, res) => {
 
     db.query(q, [req.params.id, datetime, req.body.content], (err, data) => {
         if (err) return res.json(err);
-        return res.status(200).json({ message: "Post realizado com sucesso" });
+        return res.status(200).json({ message: "Post realizado com sucesso!" });
     });
 }
 

@@ -13,15 +13,20 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    padding-left: 50px;
+    padding-right: 50px;
+    height: 100%;
 }
 
 .medium{
-    width: 40%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    height: 100%;
 }
+
 
 .left{
     width: 30%;
@@ -63,13 +68,17 @@
 
 .posts{
     width: 100%;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #025870 transparent;
 }
 
 .li-posts{
+    flex-shrink: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 85%;
     height: 60px;
     margin: 10px;
     padding: 20px;
@@ -89,4 +98,40 @@
     font-family: "DynaPuff", system-ui;
     color: #025870;
     font-weight: 500;
+    padding-left: 30px;
 }
+
+.conq-item{
+    background-color: #bfdbfb;
+    font-size: 12px;
+    font-family: "DynaPuff", system-ui;
+    color: #000000;
+    height: 150px;
+    width: 150px; 
+    padding: 25px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.trophy-img{
+    width: 85px;
+    height: 90px;
+    margin-bottom: 20px;
+}
+
+.conq ul{
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    justify-items: center;
+    height: 100%;
+    scrollbar-width: thin;
+    scrollbar-color: #025870 transparent;
+}
+
+
+

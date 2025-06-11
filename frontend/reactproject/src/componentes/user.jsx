@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../css/user.css";
 import exampleUser from "../images/example-user.png";
+import trophy from "../images/trophy.webp";
 
 function User(){
     const { id } = useParams();
@@ -77,11 +78,17 @@ function User(){
 
                 <div className="right">
                     <div className="title">Conquistas: {userInfo.conquistas_completed}</div>
-                    <ul>
-                        {conquistas.map(conq => (
-                            <li key={conq.idconquistas}>{conq.name} {conq.description}</li>
-                        ))}
-                    </ul>
+                    <div className="conq">
+                        <ul>
+                            {conquistas.map(conq => (
+                                <li key={conq.idconquistas} className="conq-item">
+                                    <img src={trophy} alt="Trophy" className="trophy-img" />
+                                    {conq.name} {conq.description}
+                                </li>
+                            ))}  
+                        </ul>                        
+                    </div>
+
                 </div>
 
             </div>
