@@ -40,7 +40,7 @@ export default function Login() {
                 <input type="text" name="username" placeholder="Username" onChange={handleChange} />
                 <input type="password" name="password" placeholder="Password" onChange={handleChange} />
                 <button type="submit" className="login-button">Entrar</button>
-                {message && <p>{message}</p>}
+                {message && <div className="message-erro">{message}</div>}
                 <div className="login-text"> <Link to="/cadastro">Não tem uma conta? Faça cadastro</Link></div>
             </form>
         </div>

@@ -160,7 +160,7 @@ function Leituras() {
                 name="pages"
                 value={editedLivro.pages}
                 onChange={handleInputChange}
-                placeholder="Número de páginas"
+                placeholder="Número de páginas lidas"
               />
               <div className="card-bottom">
                 <button onClick={handleSaveEdit} className="card-btn">

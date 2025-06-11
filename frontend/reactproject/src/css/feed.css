@@ -54,11 +54,12 @@
 }
 
 .feed-right li{
+    flex-shrink: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 80%;
-    height: 40%;
+    height: 60px;
     margin: 10px;
     padding: 20px;
     border-radius: 20px;
@@ -78,6 +79,8 @@
     padding: 0;
     margin: 0;
     list-style: none;
+    scrollbar-width: thin;
+    scrollbar-color: #025870 transparent;
 }
 
 .feed-title{
@@ -85,6 +88,6 @@
     font-size: 25px;
     font-family: "DynaPuff", system-ui;
     color: #025870;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     font-weight: 500;
 }

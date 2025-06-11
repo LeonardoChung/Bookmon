@@ -35,7 +35,7 @@ export default function Register() {
                 <input type="text" name="username" placeholder="Username" onChange={handleChange} />
                 <input type="password" name="password" placeholder="Password" onChange={handleChange} />
                 <button type="submit" className="login-button" >Cadastrar</button>
-                {message && <p>{message}</p>}
+                {message && <div className="message-erro">{message}</div>}
 
                 <div className="login-text"> <Link to="/login">Já tem uma conta? Faça login</Link></div>
             </form>

@@ -13,7 +13,7 @@ export const getBichinho = (req, res) => {
 
     db.query(q, [req.params.id], (err, data) => {
         if (err) return res.status(500).json(err);
-        if (data.length === 0) return res.status(404).json({ message: "Bichinho não encontrado" });
+        if (data.length === 0) return res.status(404).json({ message: "Bichinho não encontrado!" });
         return res.status(200).json(data[0]);
     });
 };
@@ -26,12 +26,12 @@ export const updateBichinho = (req, res) => {
 
     db.query(selectQuery, [userId], (err, result) => {
         if (err) return res.status(500).json(err);
-        if (result.length === 0) return res.status(404).json({ message: "Bichinho não encontrado" });
+        if (result.length === 0) return res.status(404).json({ message: "Bichinho não encontrado!" });
 
         let { points, level_points, level } = result[0];
 
         if (points < custo) {
-            return res.status(403).json({ message: "Pontuação insuficiente" });
+            return res.status(403).json({ message: "Pontuação insuficiente!" });
         }
 
         level_points += pontosGanhos;

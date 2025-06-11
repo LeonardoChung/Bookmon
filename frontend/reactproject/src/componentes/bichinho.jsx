@@ -1,16 +1,18 @@
 import "../css/bichinho.css";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom"; // ADICIONADO useNavigate
 import { getBichinho, feedBichinho } from "./api";
 import api from "./api";
+import quackitoLovely from "../images/quackito_lovely.gif";
 
 export default function Bichinho() {
   const { id: petId } = useParams();
+  const navigate = useNavigate(); // DEFINIDO navigate
   const [pet, setPet] = useState(null);
   const [metas, setMetas] = useState([]);
   const [showLevelUp, setShowLevelUp] = useState(false);
   const [newLevel, setNewLevel] = useState(null);
-
+  const [isEditModal, setIsEditModal] = useState(false); // ESTADO ADICIONADO
 
   useEffect(() => {
     (async () => {
@@ -53,7 +55,6 @@ export default function Bichinho() {
         setNewLevel(data.nivel);
         setShowLevelUp(true);
 
-        // conquista nível 3
         if (data.nivel >= 3) {
           const res = await fetch(`http://localhost:3001/conquistas/getQuackito/${pet.iduser}`);
           const conqData = await res.json();
@@ -69,7 +70,6 @@ export default function Bichinho() {
 
       setPet(prev => ({ ...prev, ...data }));
 
-      // meta da carne
       if (food === "carne") {
         const res = await fetch(`http://localhost:3001/metas/getCarne/${pet.iduser}`);
         const metaData = await res.json();
@@ -101,14 +101,20 @@ export default function Bichinho() {
           <div className="modal">
             <div className="modal-content">
               <div className="modal-card">
-                <h2>🎉 Parabéns! 🎉</h2>
-                <p> Você chegou ao nível {newLevel}!</p>
+                <h1>🎉 Parabéns! 🎉</h1>
+                <img src={quackitoLovely} alt="Quackito" className="quackito-lovely" />
+                <div className="text-level"> Você chegou ao nível {newLevel}!</div>
                 <button onClick={() => setShowLevelUp(false)}>Fechar</button>
               </div>
-            </div></div>
+            </div>
+          </div>
         )}
 
-        <h1>Seu Quackito Virtual</h1>
+        <div className="bichinho-title">
+          <h1>Seu Quackito Virtual</h1>
+          <button onClick={() => setIsEditModal(true)} className="button-metas">!</button>         
+        </div>
+        
 
         <img
           src={getGifByNivel(pet.nivel)}
@@ -133,20 +139,27 @@ export default function Bichinho() {
         </div>
       </div>
 
-      <div className="meta">
-        <div className="meta-card">
-          <div className="meta-title">Metas</div>
-          {metas.length === 0 && <span>Sem metas para hoje.</span>}
+      {isEditModal && (
+        <div className="modal">
+          <div className="meta">
+            <div className="meta-card">
+              <div className="meta-title">Metas</div>
+              {metas.length === 0 && <span>Sem metas para hoje.</span>}
 
-          {metas.map(meta => (
-            <div key={meta.idmeta} className="meta-text">
-              <span>
-                {meta.nome}
-              </span>
+              {metas.map(meta => (
+                <div key={meta.idmeta} className="meta-text">
+                  <span className={meta.status === 1 ? "meta-concluida" : ""}>
+                    {meta.nome}
+                  </span>
+                </div>
+              ))}
+              <div className="meta-card-bottom">
+                <button onClick={() => setIsEditModal(false)}>Fechar</button>
+              </div>
             </div>
-          ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

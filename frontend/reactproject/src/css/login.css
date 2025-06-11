@@ -55,5 +55,14 @@ form input{
     outline: none;
     box-shadow: none;
     border-color: none;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
+}
+
+.message-erro{
+    color: #000000;
+    font-family: "DynaPuff", system-ui;
+    font-size: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: 400;
 }

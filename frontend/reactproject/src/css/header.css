@@ -12,6 +12,10 @@
     margin-top: 15px;
 }
 
+.link{
+    cursor: pointer;
+}
+
 .navbar{
     background-color: rgba(200, 220, 245, 1); 
     right: 0;
