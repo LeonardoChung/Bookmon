@@ -78,7 +78,7 @@ function Feed() {
                 setNewPost({ content: "" });
                 setTimeout(() => {
                     setAddSuccess(false);
-                    window.location.reload();
+                    // window.location.reload();
                 }, 2500);
             })
             .catch(error => console.error("Erro ao adicionar novo post:", error));

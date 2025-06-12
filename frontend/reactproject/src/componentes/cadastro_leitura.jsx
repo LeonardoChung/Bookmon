@@ -94,7 +94,7 @@ const Cadastro_leitura = () => {
               placeholder="Nome do livro"
             />
             <input
-              type="text"
+              type="number"
               name="pages"
               value={newLivro.pages}
               onChange={handleNewLivroChange}
