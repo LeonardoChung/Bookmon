@@ -19,6 +19,7 @@ No MySQL Workbench rode o script bookmon.sql
 
 ### 1. Clone o repositório:
 No terminal, navegue até o local onde deseja salvar o projeto e execute
+
 `git clone https://github.com/LeonardoChung/Bookmon`
 
 ### 2. Para o backend, execute no terminal (cd backend):
