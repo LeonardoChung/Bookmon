@@ -15,6 +15,7 @@ git clone https://github.com/LeonardoChung/Bookmon
 npm install
 npm install bcryptjs cors express jsonwebtoken mysql mysql2 node-cron
  ```
+
 3. Para o frontend, abra um novo terminal e execute no terminal (cd frontend/reactproject):
  ```
 npm install
