@@ -5,9 +5,13 @@ Sistema web desenvolvido com React, Node.js (Express) e MySQL.
 
 ## 📌 Funcionalidades
 📚 Registro de leituras
+
 💬 Postagens para a comunidade
+
 🐣 Mascote virtual (estilo Pou) que evolui com base na leitura
+
 🧠 Sistema de metas e conquistas
+
 🔐 Autenticação de usuários
 
 ## 💭 Como rodar o projeto?
