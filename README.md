@@ -1,8 +1,7 @@
 ## 🐥📖 Bookmon
 
 Uma plataforma que busca incentivar a leitura! No Bookmon, você adota um Quackito (um bichinho virtual) que cresce e evolui conforme você lê!
--------------------------------------------------------------
-Sistema web desenvolvido com React, Node.js (Express) e MySQL.
+Desenvolvido com React, Node.js (Express) e MySQL.
 
 ## 📌 Funcionalidades
 📚 Registro de leituras
@@ -11,7 +10,7 @@ Sistema web desenvolvido com React, Node.js (Express) e MySQL.
 
 🐣 Mascote virtual (estilo Pou) que evolui com base na leitura
 
-🧠 Sistema de metas e conquistas
+🧠 Sistema gameficado de pontuação, metas e conquistas
 
 🔐 Autenticação de usuários
 
@@ -44,3 +43,4 @@ npm start
 cd frontend/reactproject
 npm start
  ```
+
